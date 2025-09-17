@@ -9,7 +9,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:#fff;font-family:Inter,Segoe UI,Roboto,Arial,Helvetica,sans-serif}
 a{color:inherit;text-decoration:none}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.container{max-width:1100px;margin:0 auto;padding-inline:clamp(16px,4vw,28px)}
 .header{position:sticky;top:0;z-index:999;background:linear-gradient(180deg,#111 0%,#0e0e10 100%);backdrop-filter:saturate(130%) blur(6px);border-bottom:1px solid #1f1f25}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
@@ -220,8 +220,61 @@ footer{padding:32px 0;border-top:1px solid #1f1f25;color:#9a9aa3;text-align:cent
   }
 }
 
-.wrap {
-  max-width: 1100px;
-  margin-inline: auto;
-  padding-inline: 1rem; /* agrega margen lateral en móviles */
+/* Mejora de lectura en pantallas pequeñas */
+@media (max-width:480px){
+  .hero-inner{padding:36px 0}
+}
+
+
+
+/* ====== Cabecera a dos niveles ====== */
+.header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#0b0b0d 0%, rgba(11,11,13,.92) 100%);backdrop-filter:blur(8px);border-bottom:1px solid #1f1f25}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding-block:.5rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.3px}
+.brand img{width:36px;height:36px;border-radius:50%}
+
+/* ====== Tabbar con desplazamiento ====== */
+.tabbar{margin-top:.25rem}
+.tabs{
+  display:flex; gap:.5rem; overflow-x:auto; padding-bottom:.25rem;
+  scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain;
+}
+.tabs::-webkit-scrollbar{height:6px}
+.tabs::-webkit-scrollbar-thumb{background:#2a2a31;border-radius:999px}
+.tab{
+  scroll-snap-align:start; flex:0 0 auto;
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.55rem .9rem; border-radius:12px; border:1px solid #2a2a31;
+  background:#141419; color:#fff; text-decoration:none; white-space:nowrap;
+}
+.tab:hover{background:#1a1a20}
+@media (min-width: 900px){
+  .tabs{justify-content:flex-start}
+}
+
+/* ====== Contenido con buen respiradero lateral ====== */
+.container{max-width:1100px;margin:0 auto;padding-inline:clamp(18px,4.5vw,32px)}
+.section{padding: clamp(22px, 3.2vw, 48px) 0}
+
+/* Altura total aproximada del header (topbar + tabbar) */
+:root { --header-h: 110px; }  /* ajusta a 88–110px si tu header cambia */
+
+/* Que las anclas no queden debajo del header fijo */
+#historia,
+#mv,
+#lideres,
+#previews { scroll-margin-top: var(--header-h); }
+
+
+/* Mejorar legibilidad en móvil */
+@media (max-width: 640px) {
+  .container {
+    padding-inline: clamp(22px, 6vw, 28px); /* más aire en los lados */
+  }
+
+  .section p,
+  .section .sub {
+    text-align: justify;   /* alinear el texto */
+    hyphens: auto;         /* cortar palabras si es necesario */
+  }
 }

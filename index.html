@@ -29,18 +29,25 @@
 </head>
 <body>
   <header class="header">
-    <div class="container nav">
+  <div class="container">
+    <div class="topbar">
       <a href="#" id="brandHome" class="brand">
         <img src="assets/logo.png" alt="Novus Ordinae logo">
         <span>Novus Ordinae</span>
       </a>
-      <nav>
-        <a href="#historia" class="btn">Historia</a>
-        <a href="#lideres" class="btn">Líderes</a>
-        <a href="#previews" class="btn">Previews</a>
-      </nav>
+      <!-- aquí puedes agregar iconos a la derecha si los necesitas -->
     </div>
-  </header>
+
+    <!-- Tabbar con desplazamiento horizontal en móvil -->
+    <nav class="tabbar" aria-label="Secciones del sitio">
+      <div class="tabs" role="tablist">
+        <a class="tab" href="#historia">Historia</a>
+        <a class="tab" href="#lideres">Líderes</a>
+        <a class="tab" href="#previews">Previews</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
   <main>
     <section class="hero">
@@ -56,16 +63,23 @@
         </div>
         <div class="hero-art" style="background:radial-gradient(60% 80% at 30% 30%, rgba(240,45,45,.25), transparent 60%), radial-gradient(50% 70% at 70% 60%, rgba(245,184,0,.18), transparent 60%), url('assets/defiance-logo.png') center/contain no-repeat;" aria-label="Defiance logo"></div>
       </div>
+
+    </section>
+    <section class="section container">
+    <div class="wrap">
+    <h2 id="historia">¿Quiénes somos?</h2>
+    <p class="sub">
+      Somos un clan con raíces en Defiance 2013 en PS3. En nuestros inicios nos llamábamos “Lobos de Guerra”,
+      pero con el tiempo evolucionamos hasta nuestro nombre actual: Novus Ordinae. Además, contamos con una activa
+      comunidad en Facebook, Defiance Latinoamérica, que reúne a más de 3,000 miembros.
+    </p>
+    <h2>¿Qué hacemos?</h2>
+    <p class="sub">
+      Farmear, Expediciones, Coop-maps, Pvp, sorteos y guías para nuevos jugadores y viejos.
+    </p>
+    </div>
     </section>
 
-    <section id="historia" class="section container">
-      <div class="wrap"></div>
-      <h2>¿Quienes somos?</h2>
-      <p class="sub">Somos un clan con raíces en Defiance 2013 en PS3. En nuestros inicios nos llamábamos “Lobos de Guerra”, pero con el tiempo evolucionamos hasta nuestro nombre actual: Novus Ordinae. Además, contamos con una activa comunidad en Facebook, Defiance Latinoamérica, que reúne a más de 3,000 miembros.</p>
-      <h2>¿Qué hacemos?</h2>
-       <h2></h2>
-      <p class="sub">Farmear, Expediciones, Coop-maps, Pvp, sorteos y guías para nuevos jugadores y viejos.</p>
-    </section>
 
     <section id="mv" class="section container">
       <h2>Misión & Visión</h2>
@@ -159,11 +173,12 @@
   const LEADERS = [
      { title:"Alastoria", role:"Fundador • EGO 6,000", badge:"Fundador", img:"assets/alastoria2.png", desc: "novio de Daisy\n\n " },
     { title:"The-Shadow", role:"Líder • EGO 6,000", badge:"Líder", img:"assets/shadow1.png", desc:"PVP, creador de builds y guias, responsable de sorteos.\n\n Goat" },
-    { title:"IsaacLiebh", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"Isaacliebh", role:"Líder", badge:"Líder", img:"", desc:"" },
     { title:"Acacio", role:"Líder", badge:"Líder", img:"", desc:"" },
     { title:"CAPITAN", role:"Líder", badge:"Líder", img:"", desc:"" },
     { title:"FrostGmg", role:"Líder", badge:"Líder", img:"", desc:"" },
     { title:"Juancho3881", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"LINK", role:"Líder", badge:"Líder", img:"", desc:"" },
     { title:"Theviruzz", role:"Líder", badge:"Líder", img:"", desc:"" },
     { title:"Destroyah", role:"Líder", badge:"Líder", img:"", desc:"" },
     { title:"Leogo0d", role:"Líder", badge:"Líder", img:"", desc:"" },
