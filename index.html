@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Novus Ordinae — Clan</title>
   <link rel="stylesheet" href="styles.css">
-  <meta name="description" content="Clan Novus Ordinae — Hermandad gamer enfocada en disciplina, estrategia y comunidad.">
+  <meta name="description" content="Clan Novus Ordinae — Clan enfocado en disciplina, estrategia y comunidad.">
   <style>
     .card.clickable{cursor:pointer}
     /* Horizontal carousel base */
@@ -38,8 +38,6 @@
         <a href="#historia" class="btn">Historia</a>
         <a href="#lideres" class="btn">Líderes</a>
         <a href="#previews" class="btn">Previews</a>
-        <a href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener" class="btn discord">Discord</a>
-        <a href="https://www.facebook.com/groups/516354721841754" target="_blank" rel="noopener" class="btn facebook">Facebook</a>
       </nav>
     </div>
   </header>
@@ -52,7 +50,7 @@
           <p>Nuestro clan nació en Defiance. Unidos por disciplina, estrategia y diversión.
           Únete a pvp, eventos y a una comunidad que siempre está activa.</p>
           <div class="cta-row">
-            <a href="https://discord.gg/SPV6hsRtr5" class="btn primary">Únete a Discord</a>
+            <a href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener" class="btn discord"> Únete a Discord</a>
             <a href="#lideres" class="btn secondary">Conoce a los líderes</a>
           </div>
         </div>
@@ -61,7 +59,11 @@
     </section>
 
     <section id="historia" class="section container">
+      <div class="wrap"></div>
+      <h2>¿Quienes somos?</h2>
+      <p class="sub">Somos un clan con raíces en Defiance 2013 en PS3. En nuestros inicios nos llamábamos “Lobos de Guerra”, pero con el tiempo evolucionamos hasta nuestro nombre actual: Novus Ordinae. Además, contamos con una activa comunidad en Facebook, Defiance Latinoamérica, que reúne a más de 3,000 miembros.</p>
       <h2>¿Qué hacemos?</h2>
+       <h2></h2>
       <p class="sub">Farmear, Expediciones, Coop-maps, Pvp, sorteos y guías para nuevos jugadores y viejos.</p>
     </section>
 
@@ -113,9 +115,25 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container">© 2025 Novus Ordinae — Comunidad latina</div>
-  </footer>
+<footer class="site-footer">
+  <div class="container inner">
+    <nav class="socials" aria-label="Redes sociales">
+      <!-- Discord -->
+      <a class="social-btn discord" href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener" aria-label="Discord Novus Ordinae">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3c-.2.36-.43.846-.59 1.23a18.27 18.27 0 0 0-7.936 0A8.26 8.26 0 0 0 7.44 3 19.736 19.736 0 0 0 3.68 4.369C1.069 8.16.318 11.84.58 15.469A19.9 19.9 0 0 0 8.02 19c.31-.414.587-.855.826-1.316a12.8 12.8 0 0 1-1.3-.5c.11-.08.217-.164.321-.25 2.518 1.172 5.27 1.172 7.79 0 .104.086.212.17.32.25-.417.19-.854.36-1.3.5.239.461.517.902.827 1.316a19.9 19.9 0 0 0 7.44-3.531c.34-4.58-.58-8.228-2.627-11.1ZM8.88 14.3c-.86 0-1.56-.8-1.56-1.777 0-.976.7-1.776 1.56-1.776.86 0 1.56.8 1.56 1.776 0 .977-.7 1.777-1.56 1.777Zm6.25 0c-.86 0-1.56-.8-1.56-1.777 0-.976.7-1.776 1.56-1.776.86 0 1.56.8 1.56 1.776 0 .977-.7 1.777-1.56 1.777Z"/></svg>
+        Discord
+      </a>
+      <!-- Facebook Grupo -->
+      <a class="social-btn facebook" href="https://www.facebook.com/groups/516354721841754" target="_blank" rel="noopener" aria-label="Grupo de Facebook Novus Ordinae">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12.07C22 6.48 17.52 2 11.93 2 6.35 2 1.87 6.48 1.87 12.07c0 4.99 3.66 9.13 8.44 9.93v-7.03H7.9v-2.9h2.41V9.41c0-2.38 1.42-3.69 3.6-3.69 1.04 0 2.13.19 2.13.19v2.35h-1.2c-1.19 0-1.56.74-1.56 1.5v1.8h2.65l-.42 2.9h-2.23V22c4.78-.8 8.44-4.94 8.44-9.93Z"/></svg>
+        Facebook
+      </a>
+    </nav>
+
+    <div class="footer-copy">© 2025 Novus Ordinae — Comunidad latina</div>
+  </div>
+</footer>
+
 
   <!-- Modal IG-like con carrusel interno -->
   <div class="modal" id="postModal" aria-hidden="true">
@@ -141,16 +159,20 @@
   const LEADERS = [
      { title:"Alastoria", role:"Fundador • EGO 6,000", badge:"Fundador", img:"assets/alastoria2.png", desc: "novio de Daisy\n\n " },
     { title:"The-Shadow", role:"Líder • EGO 6,000", badge:"Líder", img:"assets/shadow1.png", desc:"PVP, creador de builds y guias, responsable de sorteos.\n\n Goat" },
-    { title:"Nombre 2", role:"Líder", badge:"Líder", img:"", desc:"" },
-    { title:"Nombre 3", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"IsaacLiebh", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"Acacio", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"CAPITAN", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"FrostGmg", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"Juancho3881", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"Theviruzz", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"Destroyah", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"Leogo0d", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"Ripblanc0", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"MASON GAMORRAH", role:"Líder", badge:"Líder", img:"", desc:"" },
+    { title:"neatsergio6565", role:"Líder", badge:"Líder", img:"assets/neatsergio.png", desc:"el mas pro con los mc\n\n (Se mata solo)" },
     { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
     { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
-    { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
-    { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
-    { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
-    { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
-    { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
-    { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
+    
     // Agrega más líderes aquí...
   ];
 
