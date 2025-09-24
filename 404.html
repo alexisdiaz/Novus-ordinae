@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Redirigiendo...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      max-width: 700px;
+      padding: 20px;
+    }
+    img.logo {
+      max-width: 140px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #d4af37; /* dorado */
+      margin-bottom: 2rem;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #333;
+    }
+    .btn svg {
+      margin-right: 0.5rem;
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+  </style>
+  <script>
+    (function() {
+      const path = window.location.pathname.toLowerCase();
+      if (path.endsWith("leaders.html")) {
+        window.location.replace("/Lideres/");
+      } 
+      else if (path.endsWith("previews.html")) {
+        window.location.replace("/Previews/");
+      } 
+      else if (path.endsWith("index.html") || path.endsWith("/inicio/")) {
+        window.location.replace("/");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="container">
+    <img src="/assets/logo.png" alt="Novus Ordinae logo" class="logo">
+    <h1>¡Visite nuestro nuevo sitio web!</h1>
+    <p>Estás intentando acceder a un sitio que ya no está en uso, ve al nuevo :D.</p>
+    <div class="buttons">
+      <a class="btn" href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3l9 8h-3v9h-12v-9h-3z"/></svg>
+        Ir al nuevo sitio
+      </a>
+      <a class="btn" href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.317 4.369A19.79 19.79 0 0016.558 3c-.2.36-.43.846-.59 1.23a18.27 18.27 0 00-7.936 0A8.26 8.26 0 007.44 3 19.736 19.736 0 003.68 4.369C1.069 8.16.318 11.84.58 15.469A19.9 19.9 0 008.02 19c.31-.414.587-.855.826-1.316a12.8 12.8 0 01-1.3-.5c.11-.08.217-.164.321-.25 2.518 1.172 5.27 1.172 7.79 0 .104.086.212.17.32.25-.417.19-.854.36-1.3.5.239.461.517.902.827 1.316a19.9 19.9 0 007.44-3.531c.34-4.58-.58-8.228-2.627-11.1ZM8.88 14.3c-.86 0-1.56-.8-1.56-1.777 0-.976.7-1.776 1.56-1.776.86 0 1.56.8 1.56 1.776 0 .977-.7 1.777-1.56 1.777Zm6.25 0c-.86 0-1.56-.8-1.56-1.777 0-.976.7-1.776 1.56-1.776.86 0 1.56.8 1.56 1.776 0 .977-.7 1.777-1.56 1.777Z"/></svg>
+        Discord
+      </a>
+    </div>
+  </div>
+</body>
+</html>
