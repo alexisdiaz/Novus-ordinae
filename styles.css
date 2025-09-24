@@ -278,3 +278,140 @@ footer{padding:32px 0;border-top:1px solid #1f1f25;color:#9a9aa3;text-align:cent
     hyphens: auto;         /* cortar palabras si es necesario */
   }
 }
+
+
+
+/* ====== Grid estilo galería (PC/Tablet/Móvil) ====== */
+.grid-list{display:grid;gap:16px}
+@media (max-width:640px){ .grid-list{grid-template-columns:repeat(2,1fr)} }   /* móvil */
+@media (min-width:641px) and (max-width:1024px){ .grid-list{grid-template-columns:repeat(3,1fr)} } /* tablet */
+@media (min-width:1025px){ .grid-list{grid-template-columns:repeat(5,1fr)} }  /* pc */
+
+/* Tarjetas para grid (reutiliza .card pero ajusta thumb en vertical) */
+.grid-list .card{background:var(--card);border:1px solid #22222a;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.grid-list .card .thumb{aspect-ratio:3/4;background:#0f0f12 center/cover no-repeat}
+.grid-list .card .body{padding:10px;text-align:center}
+.grid-list .card .badge{display:inline-block;background:var(--accent);color:#fff;padding:3px 8px;border-radius:999px;font-size:12px;margin-bottom:6px}
+.grid-list .card h3{margin:4px 0 2px}
+.grid-list .role{color:var(--muted);font-size:13px}
+
+/* Previews grid: imágenes/videos a 16:9 */
+.grid-list .preview-card{background:var(--card);border:1px solid #22222a;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.grid-list .preview-card .media{aspect-ratio:16/9;background:#0f0f12;display:flex;align-items:center;justify-content:center}
+.grid-list .preview-card img,.grid-list .preview-card video{width:100%;height:100%;object-fit:cover;display:block}
+.grid-list .preview-card .body{padding:10px;text-align:center;color:var(--muted);font-size:14px}
+
+/* Botón "Ver todos" centrado */
+.see-more{text-align:center;margin-top:18px}
+.see-more .btn{background:#2a66f2;color:#fff;border-radius:8px;padding:.6rem 1.2rem;text-decoration:none;font-weight:700}
+.see-more .btn:hover{background:#1d4fd7}
+
+/* Leader cards */
+.card .thumb {
+  height: 220px;              /* dale más altura si quieres que se vean completas */
+  background: #0f0f12;        /* fondo oscuro de relleno */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* mostrar imagen completa sin recortarla */
+  object-position: center;
+}
+
+/* Desktop (default) */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-inline: clamp(18px, 4.5vw, 32px);
+}
+
+/* Tablets (hasta 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding-inline: clamp(22px, 6vw, 40px); /* más aire en los lados */
+  }
+
+  .section p,
+  .section .sub {
+    text-align: justify;   /* alinear texto para mejor lectura */
+    hyphens: auto;         /* cortar palabras si es necesario */
+  }
+}
+
+/* Móviles (hasta 640px) */
+@media (max-width: 640px) {
+  .container {
+    padding-inline: clamp(24px, 8vw, 28px); /* aún más aire lateral */
+  }
+
+  .section p,
+  .section .sub {
+    text-align: justify;
+    hyphens: auto;
+  }
+}
+
+/* ---------- GRID LIST para Leaders / Previews ---------- */
+.grid-list{
+  display:grid;
+  gap:16px;
+}
+
+/* Desktop: 5 col */
+@media (min-width:1024px){
+  .grid-list{ grid-template-columns: repeat(5, 1fr); }
+}
+/* Tablet: 3 col */
+@media (min-width:640px) and (max-width:1023.98px){
+  .grid-list{ grid-template-columns: repeat(3, 1fr); }
+}
+/* Móvil: 2 col (12 por página => 2 col × 6 filas) */
+@media (max-width:639.98px){
+  .grid-list{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tarjetas: portada sin recorte/zoom excesivo */
+.card{background:var(--card);border:1px solid #22222a;border-radius:14px;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.card .thumb{
+  background:#0f0f12 center/contain no-repeat; /* contain = sin zoom/corte */
+  aspect-ratio: 4/5;  /* formato vertical agradable */
+  width:100%;
+}
+.card .body{padding:14px}
+.badge{display:inline-block;background:var(--accent);color:#fff;padding:4px 8px;border-radius:999px;font-size:12px;margin-bottom:8px}
+.card h3{margin:6px 0 4px}
+.role{color:var(--muted);font-size:14px}
+
+/* ---------- PREVIEWS: imagen/video sin corte ---------- */
+.preview-card{background:var(--card);border:1px solid #22222a;border-radius:14px;overflow:hidden}
+.preview-card .media{background:#0f0f12;display:flex;align-items:center;justify-content:center}
+.preview-card img,.preview-card video{
+  width:100%; height:100%; object-fit:contain; display:block;
+}
+.preview-card .media{ aspect-ratio: 16/9; }
+.preview-card .body{padding:12px;color:var(--muted);font-size:14px}
+
+/* ---------- Pager centrado ---------- */
+.pager{
+  display:flex; justify-content:center; align-items:center; gap:8px;
+  margin:22px 0 8px;
+}
+.pager .page-btn{
+  border:1px solid #2a2a31; background:#141419; color:#9fb7ff;
+  padding:8px 12px; border-radius:10px; cursor:pointer; min-width:38px;
+}
+.pager .page-btn.active{ background:#2e56d3; color:#fff; border-color:#274cc0; }
+.pager .page-btn:hover{ filter:brightness(1.05); }
+
+/* ---------- Modal media fix (IG) ---------- */
+.post .media{
+  background:#000; display:flex; align-items:center; justify-content:center; max-height:80vh;
+}
+.post .media img, .post .media video{
+  width:100%; height:100%; max-height:80vh; object-fit:contain; display:block;
+}

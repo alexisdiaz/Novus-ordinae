@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novus Ordinae</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <div class="topbar">
+      <a href="index.html" id="brandHome" class="brand">
+        <img src="assets/logo.png" alt="Novus Ordinae logo">
+        <span>Novus Ordinae</span>
+      </a>
+    </div>
+    <nav class="tabbar" aria-label="Secciones del sitio">
+      <div class="tabs" role="tablist">
+        <a class="tab" href="index.html#historia">Historia</a>
+        <a class="tab" href="leaders.html">Líderes</a>
+        <a class="tab" href="previews.html">Previews</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section container">
+    <h1>Previews</h1>
+    <p class="sub">Clips, imágenes y momentos que definen nuestra comunidad.</p>
+    <div id="previewsGrid" class="grid-list"></div>
+    <div id="previewsPager" class="pager"></div>
+  </section>
+</main>
+
+<script>
+/* ------------ Archivos preview ------------ */
+const PREVIEWS = [
+  { type:"video", src:"", title:"Próximamente" },
+  { type:"image", src:"", title:"Próximamente" },
+  { type:"image", src:"", title:"Próximamente" },
+];
+
+/* tarjeta videos */
+const previewHTML = (p) => `
+<article class="preview-card">
+  <div class="media">
+    ${p.type==="video"
+      ? `<video controls preload="metadata"><source src="${p.src}" type="video/mp4"></video>`
+      : `<img src="${p.src}" alt="${p.title||""}" loading="lazy">`}
+  </div>
+  <div class="body">${p.title||""}</div>
+</article>`;
+
+const previewsGrid  = document.getElementById('previewsGrid');
+const previewsPager = document.getElementById('previewsPager');
+/* ------------ Para cada dispositivo (responsivo) ------------ */
+const Pstate = { page:1 };
+function PpageSize(){
+  if (window.matchMedia('(min-width:1024px)').matches) return 25; // 5x5
+  if (window.matchMedia('(min-width:640px)').matches)  return 9;  // 3x3
+  return 12;                                                     // 2x6
+}
+function PtotalPages(){ return Math.max(1, Math.ceil(PREVIEWS.length / PpageSize())); }
+
+function renderPreviews(){
+  const size  = PpageSize();
+  const start = (Pstate.page - 1) * size;
+  const items = PREVIEWS.slice(start, start + size);
+  previewsGrid.innerHTML = items.map(previewHTML).join('');
+  buildPPager();
+  rebindPreviewModals();
+}
+function buildPPager(){
+  const total = PtotalPages();
+  previewsPager.innerHTML = Array.from({length: total}, (_,i)=>
+    `<button class="page-btn ${i+1===Pstate.page?'active':''}" data-p="${i+1}">${i+1}</button>`
+  ).join('');
+}
+previewsPager.addEventListener('click', (e)=>{
+  const b = e.target.closest('button[data-p]'); if(!b) return;
+  Pstate.page = +b.dataset.p; renderPreviews(); window.scrollTo({top:0, behavior:'smooth'});
+});
+let pTO=null;
+window.addEventListener('resize', ()=>{ clearTimeout(pTO); pTO=setTimeout(()=>{ Pstate.page=1; renderPreviews(); }, 120); });
+
+//modelo tipo IG para previews
+/* Creamos una función global que re-enlaza eventos cada vez que se renderiza una página */
+function rebindPreviewModals(){
+  const grid = previewsGrid;
+  if(!grid) return;
+
+  const modal = document.getElementById('postModal') || createIGModal();
+  const mediaEl = document.getElementById('postMedia');
+  const tEl     = document.getElementById('postTitle');
+  const mEl     = document.getElementById('postMeta');
+  const dEl     = document.getElementById('postDesc');
+  const btnPrev = modal.querySelector('.nav.prev');
+  const btnNext = modal.querySelector('.nav.next');
+  const closeX  = modal.querySelector('.close');
+  const closeB  = document.getElementById('closePost');
+
+  let current=0;
+
+  function setMedia(p){
+    mediaEl.innerHTML='';
+    if(p.type==='video' && p.src){
+      const v=document.createElement('video'); v.setAttribute('controls',''); v.setAttribute('autoplay','');
+      v.innerHTML=`<source src="${p.src}" type="video/mp4">`; mediaEl.appendChild(v);
+    }else{
+      const img=document.createElement('img'); img.src=p.src||''; img.alt=p.title||''; mediaEl.appendChild(img);
+    }
+  }
+  function openAt(i){
+    const p = getItemAtRender(i); if(!p) return;
+    current=i; tEl.textContent=p.title||'Preview'; mEl.textContent=p.meta||''; dEl.textContent=p.desc||''; setMedia(p);
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; const v=mediaEl.querySelector('video'); if(v) v.pause(); }
+  function next(){ if(current < (previewsGrid.children.length-1)) openAt(current+1); }
+  function prev(){ if(current>0) openAt(current-1); }
+
+  grid.onclick = (e)=>{
+    const card = e.target.closest('.preview-card'); if(!card) return;
+    const i = Array.from(grid.children).indexOf(card);
+    if(i>=0) openAt(i);
+  };
+
+  closeX.onclick = close; closeB.onclick = close;
+  btnNext.onclick = next;  btnPrev.onclick = prev;
+  document.addEventListener('keydown', (e)=>{
+    if(!modal.classList.contains('open')) return;
+    if(e.key==='Escape') close();
+    if(e.key==='ArrowRight') next();
+    if(e.key==='ArrowLeft')  prev();
+  });
+
+  function getItemAtRender(i){
+    const size  = PpageSize();
+    const start = (Pstate.page - 1) * size;
+    return PREVIEWS[start + i];
+  }
+  function createIGModal(){
+    const tpl=document.createElement('div');
+    tpl.innerHTML=`
+      <div class="modal" id="postModal" aria-hidden="true">
+        <button class="close" aria-label="Cerrar">✕</button>
+        <button class="nav prev" aria-label="Anterior">‹</button>
+        <button class="nav next" aria-label="Siguiente">›</button>
+        <div class="post" role="dialog" aria-modal="true">
+          <div class="media" id="postMedia"></div>
+          <div class="side">
+            <h3 id="postTitle">Título</h3>
+            <div class="meta" id="postMeta"></div>
+            <div class="desc" id="postDesc"></div>
+            <div class="actions">
+              <a class="btn primary" href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener">Unirte a Discord</a>
+              <button class="btn" id="closePost">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    document.body.appendChild(tpl.firstElementChild);
+    return document.getElementById('postModal');
+  }
+}
+renderPreviews();
+</script>
+
+
+<script>
+//scrip para evitar ver codigo u otras cosas.
+// Bloquear menú contextual
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Detectar combinaciones peligrosas
+document.addEventListener('keydown', e => {
+  // F12
+  if (e.key === "F12") {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+
+  // Ctrl + U
+  if (e.ctrlKey && e.key.toLowerCase() === "u") {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+
+  // Ctrl + Shift + I / J / C
+  if (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+});
+
+// Extra: al soltar teclas, también bloquear
+document.addEventListener('keyup', e => {
+  if ((e.ctrlKey && e.key.toLowerCase() === "u") || e.key === "F12") {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+});
+
+// Botones de alternados (límites contraídos de una columna por dispositivo)
+document.addEventListener('DOMContentLoaded', ()=>{
+  const btnL = document.getElementById('showLeaders');
+  const btnP = document.getElementById('showPreviews');
+  const leadersGrid = document.getElementById('leadersGrid');
+  const previewsGrid = document.getElementById('previewsGrid');
+
+  if (btnL && leadersGrid) {
+    leadersGrid.classList.add('collapsed');
+    btnL.addEventListener('click', ()=>{
+      leadersGrid.classList.toggle('collapsed');
+      btnL.textContent = leadersGrid.classList.contains('collapsed') ? 'Ver todos' : 'Ver menos';
+    });
+  }
+  if (btnP && previewsGrid) {
+    previewsGrid.classList.add('collapsed');
+    btnP.addEventListener('click', ()=>{
+      previewsGrid.classList.toggle('collapsed');
+      btnP.textContent = previewsGrid.classList.contains('collapsed') ? 'Ver todos' : 'Ver menos';
+    });
+  }
+});
+</script>
+
+
+<!-- pie de pagina -->
+<footer class="site-footer">
+  <div class="container inner">
+    <nav class="socials" aria-label="Redes sociales">
+      <div class="container" style="text-align:center; padding:2rem 0;">
+        <p style="margin-bottom:1rem; font-weight:600;">Nuestras redes sociales</p>
+             <!-- Discord -->
+      <a class="social-btn discord" href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener" aria-label="Discord Novus Ordinae">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3c-.2.36-.43.846-.59 1.23a18.27 18.27 0 0 0-7.936 0A8.26 8.26 0 0 0 7.44 3 19.736 19.736 0 0 0 3.68 4.369C1.069 8.16.318 11.84.58 15.469A19.9 19.9 0 0 0 8.02 19c.31-.414.587-.855.826-1.316a12.8 12.8 0 0 1-1.3-.5c.11-.08.217-.164.321-.25 2.518 1.172 5.27 1.172 7.79 0 .104.086.212.17.32.25-.417.19-.854.36-1.3.5.239.461.517.902.827 1.316a19.9 19.9 0 0 0 7.44-3.531c.34-4.58-.58-8.228-2.627-11.1ZM8.88 14.3c-.86 0-1.56-.8-1.56-1.777 0-.976.7-1.776 1.56-1.776.86 0 1.56.8 1.56 1.776 0 .977-.7 1.777-1.56 1.777Zm6.25 0c-.86 0-1.56-.8-1.56-1.777 0-.976.7-1.776 1.56-1.776.86 0 1.56.8 1.56 1.776 0 .977-.7 1.777-1.56 1.777Z"/></svg>
+        Discord
+      </a>
+      <!-- Facebook Grupo -->
+      <a class="social-btn facebook" href="https://www.facebook.com/groups/516354721841754" target="_blank" rel="noopener" aria-label="Grupo de Facebook Novus Ordinae">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12.07C22 6.48 17.52 2 11.93 2 6.35 2 1.87 6.48 1.87 12.07c0 4.99 3.66 9.13 8.44 9.93v-7.03H7.9v-2.9h2.41V9.41c0-2.38 1.42-3.69 3.6-3.69 1.04 0 2.13.19 2.13.19v2.35h-1.2c-1.19 0-1.56.74-1.56 1.5v1.8h2.65l-.42 2.9h-2.23V22c4.78-.8 8.44-4.94 8.44-9.93Z"/></svg>
+        Facebook
+      </a>
+    </nav>
+
+    <div class="footer-copy">© 2025 Novus Ordinae — Comunidad latina</div>
+  </div>
+</footer>
+</body>
+</html>

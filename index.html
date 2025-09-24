@@ -4,83 +4,65 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Novus Ordinae — Clan</title>
-  <link rel="stylesheet" href="styles.css">
   <meta name="description" content="Clan Novus Ordinae — Clan enfocado en disciplina, estrategia y comunidad.">
-  <style>
-    .card.clickable{cursor:pointer}
-    /* Horizontal carousel base */
-    .carousel{position:relative}
-    .rail{
-      display:flex; gap:16px; overflow:auto; padding-bottom:8px;
-      scroll-snap-type:x mandatory; scroll-behavior:smooth;
-    }
-    .rail::-webkit-scrollbar{height:8px}
-    .rail::-webkit-scrollbar-thumb{background:#2a2a31;border-radius:8px}
-    .rail > .card, .rail > .preview-card{scroll-snap-align:start; flex:0 0 280px}
-    .car-nav{position:absolute; inset:0; pointer-events:none}
-    .car-btn{
-      position:absolute; top:50%; transform:translateY(-50%); pointer-events:auto;
-      background:rgba(0,0,0,.45); border:1px solid #2a2a31; color:#fff;
-      padding:10px 12px; border-radius:12px; cursor:pointer; font-size:18px;
-    }
-    .car-btn.prev{left:-6px} .car-btn.next{right:-6px}
-    @media (max-width:600px){ .rail > .card, .rail > .preview-card{flex-basis: 84vw;} }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="header">
-  <div class="container">
-    <div class="topbar">
-      <a href="#" id="brandHome" class="brand">
-        <img src="assets/logo.png" alt="Novus Ordinae logo">
-        <span>Novus Ordinae</span>
-      </a>
-      <!-- aquí puedes agregar iconos a la derecha si los necesitas -->
-    </div>
-
-    <!-- Tabbar con desplazamiento horizontal en móvil -->
-    <nav class="tabbar" aria-label="Secciones del sitio">
-      <div class="tabs" role="tablist">
-        <a class="tab" href="#historia">Historia</a>
-        <a class="tab" href="#lideres">Líderes</a>
-        <a class="tab" href="#previews">Previews</a>
+    <div class="container">
+      <div class="topbar">
+        <a href="#" id="brandHome" class="brand">
+          <img src="assets/logo.png" alt="Novus Ordinae logo">
+          <span>Novus Ordinae</span>
+        </a>
       </div>
-    </nav>
-  </div>
-</header>
+
+      <!-- Tabs principales -->
+      <nav class="tabbar" aria-label="Secciones del sitio">
+        <div class="tabs" role="tablist">
+          <a class="tab" href="#historia">Historia</a>
+          <a class="tab" href="leaders.html">Líderes</a>
+          <a class="tab" href="previews.html">Previews</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
   <main>
+    <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
         <div>
           <h1>Novus Ordinae.</h1>
           <p>Nuestro clan nació en Defiance. Unidos por disciplina, estrategia y diversión.
-          Únete a pvp, eventos y a una comunidad que siempre está activa.</p>
+            Únete a pvp, eventos y a una comunidad que siempre está activa.</p>
           <div class="cta-row">
-            <a href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener" class="btn discord"> Únete a Discord</a>
-            <a href="#lideres" class="btn secondary">Conoce a los líderes</a>
+            <a href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener" class="btn discord">Únete a Discord</a>
+            <a href="leaders.html" class="btn secondary">Conoce a los líderes</a>
           </div>
         </div>
         <div class="hero-art" style="background:radial-gradient(60% 80% at 30% 30%, rgba(240,45,45,.25), transparent 60%), radial-gradient(50% 70% at 70% 60%, rgba(245,184,0,.18), transparent 60%), url('assets/defiance-logo.png') center/contain no-repeat;" aria-label="Defiance logo"></div>
       </div>
-
     </section>
+
+    <!-- Historia -->
     <section class="section container">
-    <div class="wrap">
-    <h2 id="historia">¿Quiénes somos?</h2>
-    <p class="sub">
-      Somos un clan con raíces en Defiance 2013 en PS3. En nuestros inicios nos llamábamos “Lobos de Guerra”,
-      pero con el tiempo evolucionamos hasta nuestro nombre actual: Novus Ordinae. Además, contamos con una activa
-      comunidad en Facebook, Defiance Latinoamérica, que reúne a más de 3,000 miembros.
-    </p>
-    <h2>¿Qué hacemos?</h2>
-    <p class="sub">
-      Farmear, Expediciones, Coop-maps, Pvp, sorteos y guías para nuevos jugadores y viejos.
-    </p>
-    </div>
+      <div class="wrap">
+        <h2 id="historia">¿Quiénes somos?</h2>
+        <p class="sub">
+          Somos un clan con raíces en Defiance 2013 en PS3. En nuestros inicios nos llamábamos “Lobos de Guerra”,
+          pero con el tiempo evolucionamos hasta nuestro nombre actual: Novus Ordinae. Además, contamos con una activa
+          comunidad en Facebook, Defiance Latinoamérica, que reúne a más de 3,000 miembros.
+        </p>
+
+        <h2>¿Qué hacemos?</h2>
+        <p class="sub">
+          Farmear, Expediciones, Coop-maps, Pvp, sorteos y guías para nuevos jugadores y viejos.
+        </p>
+      </div>
     </section>
 
-
+    <!-- Misión & Visión -->
     <section id="mv" class="section container">
       <h2>Misión & Visión</h2>
       <p class="sub">El camino es claro: disciplina, fuerza y victoria.</p>
@@ -88,51 +70,25 @@
         <div class="mv-card">
           <h3>Misión</h3>
           <p>Forjar una comunidad inclusiva y disciplinada donde jugadores de todos los egos
-          mejoren habilidades, disfruten del juego en equipo y alcancen metas compartidas mediante
-          eventos, guías y apoyo constante.</p>
+            mejoren habilidades, disfruten del juego en equipo y alcancen metas compartidas mediante
+            eventos, guías y apoyo constante.</p>
         </div>
         <div class="mv-card">
           <h3>Visión</h3>
           <p>Ser referencia latina de clanes organizados: una comunidad reconocida por su
-          nivel competitivo, ética de juego y capacidad de formar nuevos jugadores.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="lideres" class="section container">
-      <h2>Líderes</h2>
-      <p class="sub">Conoce a los lideres del clan.</p>
-      
-      <div class="carousel">
-        <div id="leadersRail" class="rail"></div>
-        <div class="car-nav">
-          <button class="car-btn prev" data-target="leadersRail">‹</button>
-          <button class="car-btn next" data-target="leadersRail">›</button>
-        </div>
-      </div>
-
-      <div class="cta-wrap" style="margin-top:18px">
-      </div>
-    </section>
-
-    <section id="previews" class="section container">
-      <h2>Previews</h2>
-      <p class="sub">Clips, imágenes y momentos que definen nuestra comunidad.</p>
-
-      <div class="carousel">
-        <div id="previewsRail" class="rail"></div>
-        <div class="car-nav">
-          <button class="car-btn prev" data-target="previewsRail">‹</button>
-          <button class="car-btn next" data-target="previewsRail">›</button>
+            nivel competitivo, ética de juego y capacidad de formar nuevos jugadores.</p>
         </div>
       </div>
     </section>
   </main>
-
+ 
+<!-- pie de pagina -->
 <footer class="site-footer">
   <div class="container inner">
     <nav class="socials" aria-label="Redes sociales">
-      <!-- Discord -->
+      <div class="container" style="text-align:center; padding:2rem 0;">
+        <p style="margin-bottom:1rem; font-weight:600;">Nuestras redes sociales</p>
+             <!-- Discord -->
       <a class="social-btn discord" href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener" aria-label="Discord Novus Ordinae">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3c-.2.36-.43.846-.59 1.23a18.27 18.27 0 0 0-7.936 0A8.26 8.26 0 0 0 7.44 3 19.736 19.736 0 0 0 3.68 4.369C1.069 8.16.318 11.84.58 15.469A19.9 19.9 0 0 0 8.02 19c.31-.414.587-.855.826-1.316a12.8 12.8 0 0 1-1.3-.5c.11-.08.217-.164.321-.25 2.518 1.172 5.27 1.172 7.79 0 .104.086.212.17.32.25-.417.19-.854.36-1.3.5.239.461.517.902.827 1.316a19.9 19.9 0 0 0 7.44-3.531c.34-4.58-.58-8.228-2.627-11.1ZM8.88 14.3c-.86 0-1.56-.8-1.56-1.777 0-.976.7-1.776 1.56-1.776.86 0 1.56.8 1.56 1.776 0 .977-.7 1.777-1.56 1.777Zm6.25 0c-.86 0-1.56-.8-1.56-1.777 0-.976.7-1.776 1.56-1.776.86 0 1.56.8 1.56 1.776 0 .977-.7 1.777-1.56 1.777Z"/></svg>
         Discord
@@ -147,211 +103,35 @@
     <div class="footer-copy">© 2025 Novus Ordinae — Comunidad latina</div>
   </div>
 </footer>
-
-
-  <!-- Modal IG-like con carrusel interno -->
-  <div class="modal" id="postModal" aria-hidden="true">
-    <button class="close" aria-label="Cerrar">✕</button>
-    <button class="nav prev" aria-label="Anterior">‹</button>
-    <button class="nav next" aria-label="Siguiente">›</button>
-    <div class="post" role="dialog" aria-modal="true">
-      <div class="media" id="postMedia"><img id="postImg" alt=""></div>
-      <div class="side">
-        <h3 id="postTitle">Título</h3>
-        <div class="meta" id="postMeta"></div>
-        <div class="desc" id="postDesc"></div>
-        <div class="actions">
-          <a class="btn primary" href="https://discord.gg/SPV6hsRtr5" target="_blank" rel="noopener">Unirte a Discord</a>
-          <button class="btn" id="closePost">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script>
-  // ----- Datos dinámicos -----
-  const LEADERS = [
-    { title:"Alastoria", role:"Fundador • EGO 6,000", badge:"Fundador", img:"assets/alastoria2.png", desc: "Arkhunter veterano\n\n" },
-    { title:"The-Shadow", role:"Líder • EGO 6,000", badge:"Líder", img:"assets/shadow1.png", desc:"PVP, creador de builds y guias, responsable de sorteos.\n\nGoat" },
-    { title:"Isaacliebh", role:"Líder • EGO 6,000", badge:"Líder", img:"", desc:"" },
-    { title:"Acacio", role:"Líder • EGO 6,000", badge:"Líder", img:"", desc:"" },
-    { title:"CAPITAN", role:"Líder • EGO 6,000", badge:"Líder", img:"", desc:"" },
-    { title:"FrostGmg", role:"Líder • EGO 6,000", badge:"Líder", img:"", desc:"" },
-    { title:"Juancho3881", role:"Líder • EGO 6,000", badge:"Líder", img:"assets/juancho.png", desc:"Abuelo del clan y jubilado.\n\npone a los hijos a farmear por el, por eso tiene +10 cuentas, una por hijo. Es la herencia dijo. " },
-    { title:"LINK", role:"Líder • EGO 6,000", badge:"Líder", img:"", desc:"Farmeador 24/7, Las Afs que farmea son premium y por eso 1 af = 1m scrip" },
-    { title:"Theviruzz", role:"Líder • EGO 6,000", badge:"Líder", img:"", desc:"Chino farmer 24/7, amuleto de CN, Dura mas con el defiance roto que jugando \n\nSueña con hacer un golpe de estado." },
-    { title:"Destroyah", role:"Líder • EGO 6,000", badge:"Líder", img:"", desc:"" },
-    { title:"Leogo0d", role:"Líder • EGO 6,000", badge:"Líder", img:"", desc:"" },
-    { title:"Ripblanc0", role:"Líder • EGO 6,000", badge:"Líder", img:"", desc:"" },
-    { title:"MASON GAMORRAH", role:"Líder • EGO 6,000", badge:"Líder", img:"assets/mason.png", desc:"El pve su obsesión, busca activamente un rig jp \n\nold player" },
-    { title:"neatsergio6565", role:"Líder • EGO 6,000", badge:"Líder", img:"assets/neatsergio.png", desc:"el mas pro con los mc\n\n(Se mata solo)" },
-    { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
-    { title:"Nombre ", role:"Líder", badge:"Líder", img:"", desc:"" },
-    
-    // Agrega más líderes aquí...
-  ];
-
-  const PREVIEWS = [
-    { type:"video", src:"", title:"Proximamente" },
-    { type:"image", src:"", title:"Proximamente" },
-    { type:"image", src:"", title:"Proximamente" },
-    // Agrega más previews aquí...
-  ];
-
-  // ----- Render helpers -----
-  const leadersRail  = document.getElementById('leadersRail');
-  const previewsRail = document.getElementById('previewsRail');
-
-  const cardHTML = (l) => `
-    <article class="card clickable" data-post='${JSON.stringify(l).replace(/'/g,"&apos;")}'>
-      <div class="thumb" style="background-image:url('${l.img || ""}')"></div>
-      <div class="body">
-        ${l.badge ? `<span class="badge">${l.badge}</span>` : ""}
-        <h3>${l.title || ""}</h3>
-        <div class="role">${l.role || ""}</div>
-      </div>
-    </article>
-  `;
-  const previewHTML = (p) => `
-    <article class="preview-card">
-      <div class="media">${
-        p.type==="video"
-          ? `<video controls preload="metadata"><source src="${p.src}" type="video/mp4"></video>`
-          : `<img src="${p.src}" alt="${p.title || ""}" loading="lazy">`
-      }</div>
-      <div class="body">${p.title || ""}</div>
-    </article>
-  `;
-
-  leadersRail.innerHTML  = LEADERS.map(cardHTML).join('');
-  previewsRail.innerHTML = PREVIEWS.map(previewHTML).join('');
-
-  // ----- Modal con carrusel interno -----
-  (function(){
-    const modal = document.getElementById('postModal');
-    const imgEl = document.getElementById('postImg');
-    const tEl   = document.getElementById('postTitle');
-    const mEl   = document.getElementById('postMeta');
-    const dEl   = document.getElementById('postDesc');
-    const closeBtn  = document.getElementById('closePost');
-    const closeIcon = modal.querySelector('.close');
-    const btnPrev   = modal.querySelector('.nav.prev');
-    const btnNext   = modal.querySelector('.nav.next');
-
-    let current = 0;
-
-    function openPost(i){
-      const data = LEADERS[i];
-      if(!data) return;
-      tEl.textContent = data.title || '';
-      mEl.textContent = data.role  || '';
-      dEl.textContent = data.desc  || '';
-      imgEl.src       = data.img   || '';
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';
-      current = i;
-    }
-    function closePost(){
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow='';
-    }
-    function next(){ if(current < LEADERS.length-1){ openPost(current+1); } }
-    function prev(){ if(current > 0){ openPost(current-1); } }
-
-    // Wire open from cards
-    leadersRail.addEventListener('click', (e)=>{
-      const card = e.target.closest('.card.clickable');
-      if(!card) return;
-      const idx = Array.from(leadersRail.children).indexOf(card);
-      openPost(idx);
-    });
-
-    // Close & nav
-    modal.addEventListener('click', e=>{ if(e.target===modal) closePost(); });
-    closeBtn.addEventListener('click', closePost);
-    closeIcon.addEventListener('click', closePost);
-    btnNext.addEventListener('click', next);
-    btnPrev.addEventListener('click', prev);
-    document.addEventListener('keydown', e=>{
-      if(e.key==='Escape') closePost();
-      if(e.key==='ArrowRight') next();
-      if(e.key==='ArrowLeft') prev();
-    });
-    // Swipe
-    let startX=0;
-    modal.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; }, {passive:true});
-    modal.addEventListener('touchend', e=>{
-      const diff = e.changedTouches[0].clientX - startX;
-      if(Math.abs(diff)>50){ if(diff<0) next(); else prev(); }
-    });
-  })();
-
-  // ----- Carruseles externos: botones, drag & wheel -----
-  function setupCarousel(railId){
-    const rail = document.getElementById(railId);
-    const prevBtn = document.querySelector('.car-btn.prev[data-target="'+railId+'"]');
-    const nextBtn = document.querySelector('.car-btn.next[data-target="'+railId+'"]');
-    const step = () => Math.min(rail.clientWidth * 0.8, 360);
-
-    prevBtn.addEventListener('click', ()=> rail.scrollBy({left:-step(), behavior:'smooth'}));
-    nextBtn.addEventListener('click', ()=> rail.scrollBy({left: step(), behavior:'smooth'}));
-
-    // drag to scroll
-    let isDown=false, startX=0, scrollLeft=0;
-    rail.addEventListener('mousedown', (e)=>{ isDown=true; rail.classList.add('drag'); startX=e.pageX - rail.offsetLeft; scrollLeft=rail.scrollLeft; });
-    rail.addEventListener('mouseleave', ()=>{ isDown=false; rail.classList.remove('drag'); });
-    rail.addEventListener('mouseup',    ()=>{ isDown=false; rail.classList.remove('drag'); });
-    rail.addEventListener('mousemove',  (e)=>{
-      if(!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - rail.offsetLeft;
-      const walk = (x - startX) * 1.2;
-      rail.scrollLeft = scrollLeft - walk;
-    });
-
-    // wheel horizontal
-    rail.addEventListener('wheel', (e)=>{
-      if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
-        rail.scrollBy({left: e.deltaY, behavior:'smooth'});
-        e.preventDefault();
+     //quitar hash y volver al inicio.
+    (function(){
+      const brand = document.getElementById('brandHome');
+      if(brand){
+        brand.addEventListener('click', function(e){
+          e.preventDefault();
+          history.replaceState(null, '', window.location.pathname);
+          window.scrollTo({top:0, behavior:'smooth'});
+        });
       }
-    }, {passive:false});
-  }
-  setupCarousel('leadersRail');
-  setupCarousel('previewsRail');
+      // Smooth scroll para anclas internas (#historia, #mv, etc.)
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', (e)=>{
+          const id = a.getAttribute('href');
+          const el = document.querySelector(id);
+          if(el){
+            e.preventDefault();
+            el.scrollIntoView({behavior:'smooth', block:'start'});
+            history.replaceState(null, '', id);
+          }
+        });
+      });
+    })();
   </script>
 
+ 
 <script>
-// Brand click: remove hash and scroll to top
-(function(){
-  const brand = document.getElementById('brandHome');
-  if(brand){
-    brand.addEventListener('click', function(e){
-      e.preventDefault();
-      history.replaceState(null, '', window.location.pathname);
-      window.scrollTo({top:0, behavior:'smooth'});
-    });
-  }
-  // Smooth scroll for nav anchors
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', (e)=>{
-      const id = a.getAttribute('href');
-      const el = document.querySelector(id);
-      if(el){
-        e.preventDefault();
-        el.scrollIntoView({behavior:'smooth', block:'start'});
-        history.replaceState(null, '', id);
-      }
-    });
-  });
-})();
-</script>
-
-
-
-<script>
+// scrip para evitar ver codigo u otras cosas.
 // Bloquear menú contextual
 document.addEventListener('contextmenu', e => e.preventDefault());
 
@@ -387,131 +167,29 @@ document.addEventListener('keyup', e => {
     return false;
   }
 });
-</script>
 
+// Botones de alternados (límites contraídos de una columna por dispositivo)
+document.addEventListener('DOMContentLoaded', ()=>{
+  const btnL = document.getElementById('showLeaders');
+  const btnP = document.getElementById('showPreviews');
+  const leadersGrid = document.getElementById('leadersGrid');
+  const previewsGrid = document.getElementById('previewsGrid');
 
-
-
-<script>
-(function(){
-  // Rails
-  const leadersRail  = document.getElementById('leadersRail');
-  const previewsRail = document.getElementById('previewsRail');
-
-  // Shared modal elements
-  const modal   = document.getElementById('postModal');
-  const mediaEl = document.getElementById('postMedia');
-  const tEl     = document.getElementById('postTitle');
-  const mEl     = document.getElementById('postMeta');
-  const dEl     = document.getElementById('postDesc');
-  const closeBtn  = document.getElementById('closePost');
-  const closeIcon = modal.querySelector('.close');
-  const btnPrev   = modal.querySelector('.nav.prev');
-  const btnNext   = modal.querySelector('.nav.next');
-
-  // Data sources (use arrays defined earlier in the page)
-  const Data = {
-    leaders: typeof LEADERS !== 'undefined' ? LEADERS : [],
-    previews: typeof PREVIEWS !== 'undefined' ? PREVIEWS : []
-  };
-
-  let current = 0;
-  let currentType = 'leaders'; // 'leaders' | 'previews'
-
-  function getList(){ return Data[currentType] || []; }
-
-  function setMediaFor(item){
-    // Reset media content
-    mediaEl.innerHTML = '';
-    if(currentType === 'previews' && item.type === 'video'){
-      const v = document.createElement('video');
-      v.setAttribute('controls','');
-      v.setAttribute('autoplay','');
-      v.innerHTML = `<source src="${item.src || ''}" type="video/mp4">`;
-      mediaEl.appendChild(v);
-    } else {
-      const img = document.createElement('img');
-      img.id = 'postImg';
-      img.alt = '';
-      img.src = item.img || item.src || '';
-      mediaEl.appendChild(img);
-    }
-  }
-
-  function openPost(i, type){
-    currentType = type;
-    const list = getList();
-    const data = list[i];
-    if(!data) return;
-    tEl.textContent = data.title || '';
-    mEl.textContent = (type==='leaders' ? (data.role || '') : (data.role || ''));
-    dEl.textContent = data.desc || data.title || '';
-    setMediaFor(data);
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden','false');
-    document.body.style.overflow='hidden';
-    current = i;
-  }
-
-  function closePost(){
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden','true');
-    document.body.style.overflow='';
-    // Stop video playback if any
-    const v = mediaEl.querySelector('video');
-    if(v){ v.pause(); }
-  }
-
-  function next(){
-    const list = getList();
-    if(current < list.length - 1){ openPost(current + 1, currentType); }
-  }
-  function prev(){
-    if(current > 0){ openPost(current - 1, currentType); }
-  }
-
-  // Open from leaders rail
-  if(leadersRail){
-    leadersRail.addEventListener('click', (e)=>{
-      const card = e.target.closest('.card.clickable');
-      if(!card) return;
-      const idx = Array.from(leadersRail.children).indexOf(card);
-      openPost(idx, 'leaders');
+  if (btnL && leadersGrid) {
+    leadersGrid.classList.add('collapsed');
+    btnL.addEventListener('click', ()=>{
+      leadersGrid.classList.toggle('collapsed');
+      btnL.textContent = leadersGrid.classList.contains('collapsed') ? 'Ver todos' : 'Ver menos';
     });
   }
-  // Open from previews rail
-  if(previewsRail){
-    previewsRail.addEventListener('click', (e)=>{
-      const card = e.target.closest('.preview-card');
-      if(!card) return;
-      const idx = Array.from(previewsRail.children).indexOf(card);
-      openPost(idx, 'previews');
+  if (btnP && previewsGrid) {
+    previewsGrid.classList.add('collapsed');
+    btnP.addEventListener('click', ()=>{
+      previewsGrid.classList.toggle('collapsed');
+      btnP.textContent = previewsGrid.classList.contains('collapsed') ? 'Ver todos' : 'Ver menos';
     });
   }
-
-  // Close & navigation
-  modal.addEventListener('click', (e)=>{ if(e.target === modal) closePost(); });
-  closeBtn.addEventListener('click', closePost);
-  closeIcon.addEventListener('click', closePost);
-  btnNext.addEventListener('click', next);
-  btnPrev.addEventListener('click', prev);
-
-  // Keyboard
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape') closePost();
-    if(e.key === 'ArrowRight') next();
-    if(e.key === 'ArrowLeft')  prev();
-  });
-
-  // Swipe on modal
-  let startX = 0;
-  modal.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; }, {passive:true});
-  modal.addEventListener('touchend', (e)=>{
-    const diff = e.changedTouches[0].clientX - startX;
-    if(Math.abs(diff) > 50){ if(diff < 0) next(); else prev(); }
-  });
-})();
+});
 </script>
-
 </body>
 </html>
